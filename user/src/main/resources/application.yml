@@ -1,0 +1,35 @@
+micronaut:
+  application:
+    name: user
+
+  server:
+    cors:
+      enabled: true
+
+datasources:
+  default:
+    #dbCreate: create-drop
+    pooled: true
+    #url: jdbc:h2:mem:devDb
+    #driverClassName: org.h2.Driver
+    #username: sa
+    #password: ''
+
+
+    url: jdbc:mysql://localhost:3306/micronaut?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQLDialect
+
+
+
+jpa:
+  default:
+    entity-scan:
+      packages: 'user.domain'
+      properties:
+        hibernate:
+          hbm2ddl:
+           auto: update
+           show_sql: true
